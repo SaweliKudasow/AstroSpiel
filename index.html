@@ -1,29 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <link rel="stylesheet" href="style.css">
-    <title>Astro Spiel</title>
+    <title>Sternen-Memory – Sternbilder</title>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="card">1</div>
-        <div class="card">2</div>
-        <div class="card">3</div>
-        <div class="card">4</div>
-        <div class="card">5</div>
-        <div class="card">6</div>
-        <div class="card">7</div>
-        <div class="card">8</div>
-        <div class="card">9</div>
-        <div class="card">10</div>
-        <div class="card">11</div>
-        <div class="card">12</div>
-        <div class="card">13</div>
-        <div class="card">14</div>
-        <div class="card">15</div>
-        <div class="card">16</div>
+    <div class="starfield" id="starfield" aria-hidden="true"></div>
+    <div class="nebula" aria-hidden="true"></div>
+
+    <main class="game">
+        <header class="header">
+            <h1 class="title">Sternen-Memory</h1>
+            <p class="subtitle">Ordne jedem <strong>Namen</strong> das passende <strong>Sternbild</strong> am Nachthimmel zu</p>
+        </header>
+
+        <div class="topbar">
+            <div class="stat">Züge: <span id="moves">0</span></div>
+            <div class="stat">Paare: <span id="matches">0</span>/<span id="totalPairs">8</span></div>
+            <div class="stat">Zeit: <span id="timer">0&nbsp;s</span></div>
+        </div>
+
+        <button id="restart" class="restart" type="button">Neues Spiel</button>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+
+        <div class="wrapper" id="board" aria-label="Spielfeld"></div>
+    </main>
+
+    <div id="celebration" class="celebration celebration--hidden" role="dialog" aria-modal="true" aria-labelledby="celebrationTitle" aria-hidden="true">
+        <div class="celebration-backdrop" aria-hidden="true"></div>
+        <div class="celebration-aurora" aria-hidden="true"></div>
+        <div class="celebration-particles" id="celebrationParticles" aria-hidden="true"></div>
+        <div class="celebration-meteors" id="celebrationMeteors" aria-hidden="true"></div>
+        <div class="celebration-panel">
+            <div class="celebration-orbit" aria-hidden="true"></div>
+            <h2 id="celebrationTitle" class="celebration-title">Geschafft!</h2>
+            <p class="celebration-sub">Alle Sternbilder am Himmel vereint.</p>
+            <p class="celebration-stats" id="celebrationStats"></p>
+            <button type="button" class="celebration-btn" id="celebrationClose">Weiterspielen</button>
+        </div>
     </div>
+
+    <script src="script.js" defer></script>
 </body>
 </html>
