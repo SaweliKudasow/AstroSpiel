@@ -16,6 +16,7 @@
     const celebrationClose = document.getElementById("celebrationClose");
 
     const PAIRS = 8;
+    const PAIR_COLORS = ["#7eb8ff", "#e8c547", "#c4a8ff", "#6fe8c3", "#ff9fb3", "#8fd3ff", "#ffd38a", "#95f0a2"];
 
     const CONSTELLATIONS = [
         {
@@ -67,6 +68,9 @@
             svg: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90"><rect width="120" height="90" fill="#070b14"/><g fill="#8899cc" opacity="0.35"><circle cx="18" cy="78" r="0.8"/><circle cx="105" cy="68" r="0.7"/></g><g stroke="#aab8ff" stroke-width="1.1" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M32 24 L82 24 L82 58 L32 58 Z"/><path d="M32 24 L18 12"/><path d="M82 58 L92 72 L100 78"/></g><circle cx="32" cy="24" r="3" fill="#e8f0ff"/><circle cx="82" cy="24" r="2.8" fill="#fff"/><circle cx="82" cy="58" r="2.7" fill="#fff"/><circle cx="32" cy="58" r="2.9" fill="#fff"/><circle cx="18" cy="12" r="2.6" fill="#e8c547"/><circle cx="92" cy="72" r="2.1" fill="#dde4ff"/><circle cx="100" cy="78" r="2.3" fill="#fff"/></svg>`,
         },
     ];
+    const PAIR_BADGES = new Map(
+        CONSTELLATIONS.map((c, i) => [c.id, { label: String(i + 1), color: PAIR_COLORS[i % PAIR_COLORS.length] }])
+    );
 
     function svgToDataUrl(svg) {
         const encoded = encodeURIComponent(svg.replace(/\s+/g, " ").trim());
@@ -188,9 +192,15 @@
         card.classList.remove("flipped");
     }
 
-    function markMatched(card) {
+    function markMatched(card, constellationId) {
+        const badge = PAIR_BADGES.get(constellationId);
         card.classList.add("matched");
         card.setAttribute("tabindex", "-1");
+        if (badge) {
+            card.dataset.pair = badge.label;
+            card.style.setProperty("--pair-color", badge.color);
+            card.setAttribute("aria-label", `Gefundenes Paar ${badge.label}`);
+        }
     }
 
     function handleCardClick(card, data) {
@@ -212,8 +222,8 @@
             const ok = isMatch(first.data, second.data);
 
             if (ok) {
-                markMatched(first.el);
-                markMatched(second.el);
+                markMatched(first.el, first.data.constellationId);
+                markMatched(second.el, second.data.constellationId);
                 opened = [];
                 matches += 1;
                 updateHUD();
