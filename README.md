@@ -1,69 +1,40 @@
-# Sternen-Memory · Astro Spiel
+# Star Memory · Astro Game
 
-> Ein **Memory-Spiel** im Look des Nachthimmels: Ordne **Namen** und **Abbilder** von Sternbildern – rein im Browser, ohne Build-Tool und ohne Server.
-
----
-
-## Über das Projekt
-
-**Sternen-Memory** ist eine kleine Web-App zum Üben von Gedächtnis und Sternkunde. Auf einem **4×4-Feld** liegen **16 Karten** – je **8 Sternbilder** mit je zwei Karten:
-
-- eine Karte zeigt den **deutschen Namen** des Sternbilds  
-- die andere zeigt eine **stilisierte Sternfigur** (SVG, eingebettet, **ohne externe Bilder**)
-
-Gültig ist nur ein Paar, wenn **derselbe Sternbild-Name** zur **passenden Abbildung** gehört (nicht zwei Namen- oder zwei Bildkarten).
-
-Die Oberfläche ist **auf Deutsch**, mit **dunklem Astronomie-Design**, **funkelnden Sternen** im Hintergrund und einem **Gratulations-Overlay** nach dem letzten Paar.
+> A small browser-based memory game with a night-sky theme. Match constellation names with their illustrations.
 
 ---
 
-## Funktionen
+## About the Project
 
-
-| Bereich                 | Beschreibung                                                                                                         |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| **Spiel**               | Züge, gefundene Paare, Stoppuhr ab dem ersten Aufdecken                                                              |
-| **Neues Spiel**         | Mischt die Karten neu, setzt Statistik und Zeit                                                                      |
-| **Sternbilder**         | Orion, Großer Bär, Kassiopeia, Leier, Schwan, Skorpion, Löwe, Pegasus                                                |
-| **Design**              | Dunkles Farbschema, Nebel-Verlauf, CSS-Animationen, `viewport-fit=cover` für iPhone                                  |
-| **Sieg**                | Vollbild-Dialog mit Sternenregen, Meteoren, Aurora und Statistik                                                     |
-| **Barrierefreiheit**    | `aria-live` für Status, Dialog mit Fokus, Tastatur (Enter/Leertaste auf Karten), **Escape** schließt den Sieg-Dialog |
-| **Reduzierte Bewegung** | Bei `prefers-reduced-motion: reduce` werden intensive Animationen abgeschwächt                                       |
-
+This project is a lightweight card-matching game built for the browser.  
+Players flip cards and try to find matching pairs of constellation names and images in as few moves as possible.
 
 ---
 
-## Technologie
+## Tech Stack
 
-- **HTML5** – Struktur
-- **CSS3** – Grid, Flexbox, Custom Properties, 3D-Kartenflip, Keyframes
-- **Vanilla JavaScript** – ein IIFE, keine Frameworks
-
----
-
-## Projektstruktur
-
-```
-Astro Spiel/
-├── index.html      # Seite, Spielfeld, Sieg-Overlay
-├── style.css       # Layout, Thema, Animationen
-├── script.js       # Logik, Sternbild-Daten (SVG als Data-URLs), Effekte
-└── README.md       # Diese Datei
-```
+- **HTML5** for page structure
+- **CSS3** for layout, animations, and card-flip effects
+- **Vanilla JavaScript** for game logic (no frameworks)
 
 ---
 
-## Starten
+## Getting Started
 
-1. Repository bzw. Ordner lokal öffnen.
-2. `**index.html**` im Browser öffnen (Doppelklick oder „Open with Live Server“ o. Ä.).
+1. Clone or download this repository.
+2. Open the project folder locally.
+3. Start the game by opening `index.html` in your browser.
 
-> Es ist **kein npm install** und **kein Build** nötig. Alle Grafiken der Sternfiguren sind **inline SVG** im JavaScript – das Spiel funktioniert auch **offline**, sobald die Dateien geladen sind.
+You can also use a local extension like Live Server, but it is optional.
 
 ---
 
-## Lizenz & Mitwirkung
+## Notes
 
-Projekt für Lern- und Demonstrationszwecke. Bei Ideen oder Fehlern einfach ein Issue oder Pull Request im jeweiligen Repository – oder lokal weiterbauen.
+- No `npm install` required
+- No build step required
+- The game runs entirely in the browser
 
-**Viel Spaß beim Spielen und Sterne zählen.**
+---
+
+**Have fun playing and exploring the stars.**
